@@ -5,10 +5,10 @@ an entire system will be created to manage bank transactions for clients who
 have one or more bank accounts.
 
 ## Author
-[Your name]
+[Jing Li]
 
 ## Assignment
-Assignment [assignment number]: [Indicate the name and description of the current assignment]
+Assignment [01] [This assignment will produce some foundational classes to be used in an overall system. The classes will incorporate the outcomes associated with Module 01. Specifically, these classes will incorporate encapsulation through the use of private attributes and public accessors and mutators. Additionally, these classes will benefit from thorough unit testing, including unit test planning. The classes developed in this assignment will contribute to upcoming assignments. ]
 
 ## Encapsulation
 [use this section to explain how Encapsulation was achieved in the BankAccount and Transaction classes.]
