@@ -4,7 +4,7 @@ Author: {Jing Li}
 """
 
 
-from email_validator import ValidatedEmail, EmailNotValidError
+from email_validator import validate_email, EmailNotValidError
 
 
 class Client:
@@ -30,7 +30,7 @@ class Client:
             raise ValueError("last name should not be blank")
        
         try:
-            user_email = ValidatedEmail(email_address)
+            user_email = validate_email(email_address)
             self.__email_address = user_email.email
         except EmailNotValidError:
             self.__email_address = "email@pixell-river.com" 
@@ -43,15 +43,15 @@ class Client:
     # Getter for first_name
     @property
     def first_name(self)->str:
-        return self.first_name
+        return self.__first_name
     # Getter for last_name
     @property
     def last_name(self)->str:
-        return self.last_name
+        return self.__last_name
      # Getter for email_address
     @property
     def email_address(self)->str:
-        return self.email_address
+        return self.__email_address
     
     def __str__(self)->str:
         return f"{self.last_name}, {self.first_name}[{self.client_number}]-{self.email_address}"
