@@ -1,5 +1,5 @@
 """
-Description: {This file defines a `Client` class, which represents a client with a client number, first name, 
+Description: {This is a `Client` class, representing a client with a client number, first name, 
 last name, and email address. The class validates the client number as an integer, ensures that the first and last 
 names are non-blank, and validates the email address using the `email_validator` package. If the email is invalid, 
 a default email is assigned. The class provides getters for all attributes and a string representation method for 

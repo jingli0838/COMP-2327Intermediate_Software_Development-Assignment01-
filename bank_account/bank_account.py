@@ -1,5 +1,5 @@
 """
-Description: {This module defines a `BankAccount` class, creating a simple bank account with an account number, 
+Description: {This is  a `BankAccount` class, creating a simple bank account with an account number, 
 client number, and balance. The class includes methods to deposit, withdraw, and update the balance, with validations
 for numeric input and account balance limits. It also handles invalid input and ensures that the balance is always
 valid. Additionally, the class provides string representation for displaying account information.}
