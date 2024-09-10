@@ -46,10 +46,14 @@ class BankAccount:
     #deposit method
     def deposit(self,amount):
         """
+        Deposite an amount into account
+
         Deposite amount:
         - Amount must be numeric
         - Amount must be positive
-        - Add the amount to the balance
+
+        if amount is valid, add the amount to the balance
+        or else raise ValueError
         """
         if not isinstance(amount,(float,int)):
             raise ValueError(f"Deposit amount:{amount} must be numeric")
@@ -60,11 +64,15 @@ class BankAccount:
     #withdraw method
     def withdraw(self,amount):
         """
+        withdraw an amount from account
+
         Withdraw amount:
         - Amount must be numeric
         - Amount must be positive 
         - Amount must not exceed the account balance
-        - Subtract amount from balance
+        
+        If amount is valid, Subtract amount from balance
+        or else raise ValueError
         """
         if not isinstance(amount,(float,int)):
             raise ValueError(f"Withdraw amount:{amount} must be numeric")
