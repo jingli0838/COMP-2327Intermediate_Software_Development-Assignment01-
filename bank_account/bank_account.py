@@ -2,8 +2,6 @@
 Description: {description of the file.}
 Author: {Jing Li}
 """
-from numbers import Number
-#import numbers
 
 
 class BankAccount:
@@ -36,14 +34,15 @@ class BankAccount:
         return self.__balance
     
     #to update the balance accroding to the amount
-    def update_balance(self,amount):
+    def update_balance(self,amount:float):
         """
         update balance of bankaccount
         """
         try:
-            self.__balance += float(amount)
-        except ValueError as e:
-            print(f"the balance is not updated due to{e}")
+            amount = float(amount)
+            self.__balance += amount
+        except ValueError:
+           raise ValueError(f"the balance is not updated due to invalid amount")
     #deposit method
     def deposit(self,amount):
         """
@@ -52,7 +51,7 @@ class BankAccount:
         - Amount must be positive
         - Add the amount to the balance
         """
-        if not isinstance(amount,Number):
+        if not isinstance(amount,(float,int)):
             raise ValueError(f"Deposit amount:{amount} must be numeric")
         elif amount <= 0:
             raise ValueError(f"Deposit amount:${amount:,.2f} must be positive")
@@ -67,7 +66,7 @@ class BankAccount:
         - Amount must not exceed the account balance
         - Subtract amount from balance
         """
-        if not isinstance(amount,Number):
+        if not isinstance(amount,(float,int)):
             raise ValueError(f"Withdraw amount:{amount} must be numeric")
         elif amount <=0:
             raise ValueError(f"Withdraw amount:${amount:,.2f} must be positive")
