@@ -18,7 +18,12 @@ def main():
 
     # 1. Code a statement which creates a valid instance of the Client class.
     # Use your own unique valid values for the inputs to the class.
-    client = Client(123,"Lily","Green","lilygreen@gmail.com")
+    try:
+        client = Client(123,"Lily","Green","lilygreen@gmail.com")
+    except ValueError as e:
+        print(f"Error is:{e}")
+
+        
     
    
  
@@ -32,7 +37,10 @@ def main():
     # Use the client_number used to create the Client object in step 1 for the 
     # BankAccount's client_number. 
     # Use a floating point value for the balance. 
-    bank_account_01 = BankAccount(456,123,1000.00)
+    try:
+        bank_account_01 = BankAccount(456,client.client_number,1000.00)
+    except ValueError as e:
+        print(f"Error is: {e}")
 
 
 
@@ -42,7 +50,7 @@ def main():
     # BankAccount's client_number. 
     # Use an INVALID value (non-float) for the balance. 
     try:
-        bank_account_02 = BankAccount(457,124,"balance")
+        bank_account_02 = BankAccount(457,client.client_number,"balance")
     except Exception as e:
         print(f"Error is:{e}")
 
@@ -71,7 +79,10 @@ def main():
 
 
     # 8. Attempt to withdraw a valid amount of your choice from the BankAccount create in step 3. 
-    bank_account_01.withdraw(200)
+    try:
+        bank_account_01.withdraw(200)
+    except ValueError as e:
+        print(f"Error is:{e}")
 
 
     # 9. Attempt to withdraw a non-numeric value from the BankAccount create in step 3. 

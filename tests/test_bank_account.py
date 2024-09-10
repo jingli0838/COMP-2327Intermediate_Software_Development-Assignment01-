@@ -20,12 +20,12 @@ class TestBankAccount(unittest.TestCase):
         self.assertEqual(self.bank_account._BankAccount__account_number,123)
         self.assertEqual(self.bank_account._BankAccount__client_number,456)
         self.assertEqual(self.bank_account._BankAccount__balance,1000.00)
-    #test when bank_account is a string
-    def test_bank_account_invalid(self):
+    #test when account_number is a string
+    def test_account_number_invalid(self):
         with self.assertRaises(ValueError):
             bank_account= BankAccount("123",456,1000.00)
     #test when client_account is a string
-    def test_client_account_invalid(self):
+    def test_client_number_invalid(self):
         with self.assertRaises(ValueError):
             bank_account = BankAccount(123,"456",1000.00)
     #test when balance is an integer
