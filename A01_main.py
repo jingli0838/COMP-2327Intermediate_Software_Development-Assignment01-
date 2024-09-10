@@ -9,7 +9,8 @@ from bank_account.bank_account import BankAccount
 from client.client import Client
 
 def main():
-    """Test the functionality of the methods encapsulated 
+    """
+    Test the functionality of the methods encapsulated 
     in the BankAccount and Transaction classes.
     """ 
     # In the statements coded below, ensure that any statement that could result 
