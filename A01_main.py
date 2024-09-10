@@ -50,8 +50,8 @@ def main():
     # BankAccount's client_number. 
     # Use an INVALID value (non-float) for the balance. 
     try:
-        bank_account_02 = BankAccount(457,client.client_number,"balance")
-    except Exception as e:
+        bank_account_02 = BankAccount(457, client.client_number, "balance")
+    except ValueError as e:
         print(f"Error is:{e}")
 
 
@@ -66,14 +66,14 @@ def main():
     # 6. Attempt to deposit a non-numeric value into the BankAccount create in step 3. 
     try:
         bank_account_01.deposit("amount")
-    except Exception as e:
+    except ValueError as e:
         print(f"Error is:{e}")
 
 
     # 7. Attempt to deposit a negative value into the BankAccount create in step 3. 
     try:
         bank_account_01.deposit(-220)
-    except Exception as e:
+    except ValueError as e:
         print(f"Error is:{e}")
 
 
@@ -88,20 +88,20 @@ def main():
     # 9. Attempt to withdraw a non-numeric value from the BankAccount create in step 3. 
     try:
         bank_account_01.withdraw("amount")
-    except Exception as e:
+    except ValueError as e:
         print(f"Error is:{e}")
 
     # 10. Attempt to withdraw a negative value from the BankAccount create in step 3. 
     try:
         bank_account_01.withdraw(-200)
-    except Exception as e:
+    except ValueError as e:
         print(f"Error is:{e}")
 
     # 11. Attempt to withdraw a value from the BankAccount create in step 3 which 
     # exceeds the current balance of the account. 
     try:
         bank_account_01.withdraw(1100)
-    except Exception as e:
+    except ValueError as e:
         print(f"Error is:{e}")
  
 
