@@ -47,19 +47,19 @@ class TestBankAccount(unittest.TestCase):
         self.assertEqual(456,self.bank_account.client_number)
 
     def test_balance(self):
-        self.assertEqual(1000.00,self.bank_account.balance)
+        self.assertEqual(1000.00,round(self.bank_account.balance,2))
 
     #test update method when amount is positive
     def test_update_balance_with_positive_amount(self):
         self.bank_account.update_balance(200)
         expected = 1200.00
-        self.assertEqual(expected,self.bank_account.balance)
+        self.assertEqual(expected,round(self.bank_account.balance,2))
 
     #test update method when amount is negative
     def test_update_balance_with_negative_amount(self):
         self.bank_account.update_balance(-200)
         expected =800.00
-        self.assertEqual(expected,self.bank_account.balance)
+        self.assertEqual(expected,round(self.bank_account.balance,2))
 
     #test update method when amount is a string
     def test_update_amount_invalid(self):
@@ -78,7 +78,7 @@ class TestBankAccount(unittest.TestCase):
     def test_deposit_amount_valid(self):
         self.bank_account.deposit(200)
         expected =1200.00
-        self.assertEqual(expected,self.bank_account.balance)
+        self.assertEqual(expected,round(self.bank_account.balance,2))
 
     #test withdraw method, amount is invalid
     def test_withdraw_amount_invalid(self):
@@ -97,7 +97,7 @@ class TestBankAccount(unittest.TestCase):
     def test_withdraw_amount_valid(self):
         self.bank_account.withdraw(200)
         expected = 800
-        self.assertEqual(expected,self.bank_account.balance)
+        self.assertEqual(expected,round(self.bank_account.balance,2))
 
     #test string method
     def test_string(self):

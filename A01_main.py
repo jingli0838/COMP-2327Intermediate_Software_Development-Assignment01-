@@ -49,8 +49,9 @@ def main():
 
     # 5. Code a statement which prints the Client instance created in step 1. 
     # Code a statement which prints the BankAccount instance created in step 3.
-    print(str(client))
-    print(str(bank_account_01))
+    print(client)
+    print(bank_account_01)
+    
 
 
 
@@ -94,7 +95,7 @@ def main():
  
 
     # 12. Code a statement which prints the BankAccount instance created in step 3. 
-    print(str(bank_account_01))
+    print(bank_account_01)
   
 
 
