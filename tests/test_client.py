@@ -23,22 +23,22 @@ class TestClient(unittest.TestCase):
         self.assertEqual(self.client._Client__last_name, "Green")
         self.assertEqual(self.client._Client__email_address, "lilygreen@gmail.com")
     # test invalid client number
-    def test_init_with_invalid_client_number_raises_Value_Error(self):
+    def test_init_invalid_client_number_raises_value_Error(self):
         with self.assertRaises(ValueError):
             Client(None, "Lily", "Green", "lilygreen@gmail.com")
         
     # test when Attribute first_name is blank
-    def test_init_with_invalid_first_name_raises_Value_Error(self):
+    def test_init_invalid_first_name_raises_value_Error(self):
         with self.assertRaises(ValueError):
             Client(123, " ", "Green", "lilygreen@gmail.com")
 
     # test when Attribute last_name is blank
-    def test_init_with_invalid_last_name_raises_Value_Error(self):
+    def test_init_invalid_last_name_raises_value_Error(self):
         with self.assertRaises(ValueError):
             Client(123,"lily ", " ", "lilygreen@gmail.com")
 
     # test when Attribute email_address is invalid
-    def test_init_with_invalid_email_address_sets_default_value(self):
+    def test_init_invalid_email_address_sets_default_value(self):
         expected= "email@pixell-river.com" 
         client= Client(123,"Lily ", "Green", "lilygreengmail")
         self.assertEqual(client.email_address, expected)

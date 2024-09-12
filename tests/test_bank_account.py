@@ -21,15 +21,15 @@ class TestBankAccount(unittest.TestCase):
         self.assertEqual(self.bank_account._BankAccount__client_number, 456)
         self.assertEqual(round(self.bank_account._BankAccount__balance,2), 1000.00)
     #test when account_number is a string
-    def test_init_with_invalid_account_number_raises_value_error(self):
+    def test_init_invalid_account_number_raises_value_error(self):
         with self.assertRaises(ValueError):
             BankAccount("123", 456, 1000.00)
     #test when client_account is a string
-    def test_init_with_invalid_client_number_raises_value_error(self):
+    def test_init_invalid_client_number_raises_value_error(self):
         with self.assertRaises(ValueError):
             BankAccount(123, "456", 1000.00)
     #test whent balance is a string and be setted to 0.0
-    def test_init_with_invalid_balance_sets_to_0(self):
+    def test_init_invalid_balance_sets_to_0(self):
         bank_account= BankAccount(123, 456, "balance")
         expected = 0.0
         self.assertEqual(expected, bank_account.balance)
@@ -57,21 +57,21 @@ class TestBankAccount(unittest.TestCase):
         self.assertEqual(expected, round(self.bank_account.balance,2))
 
     #test update method when amount is a string
-    def test_update_balance_with_invalid_amount_raises_value_error(self):
+    def test_update_balance_invalid_amount_raises_value_error(self):
         with self.assertRaises(ValueError):
             self.bank_account.update_balance("amount")
             
     #test deposit method when amount is a string
-    def test_deposit_with_invalid_amount_raises_value_error(self):
+    def test_deposit_invalid_amount_raises_value_error(self):
         with self.assertRaises(ValueError):
             self.bank_account.deposit("amount")
 
     #test deposit method when amount is negative
-    def test_deposit_with_negative_amount_raises_value_error(self):
+    def test_deposit_negative_amount_raises_value_error(self):
         with self.assertRaises(ValueError):
             self.bank_account.deposit(-200)
     #test deposit amount is valid
-    def test_deposit_with_valid_amount(self):
+    def test_deposit_valid_amount(self):
         self.bank_account.deposit(200)
         expected = 1200.00
         self.assertEqual(expected, round(self.bank_account.balance,2))
@@ -85,7 +85,7 @@ class TestBankAccount(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.bank_account.withdraw(0)
     #test withdraw method, amount is larger than current balance
-    def test_withdraw_amount_larger_than_balance_raises_value_error(self):
+    def test_withdraw_amount_exceed_balance_raises_value_error(self):
         with self.assertRaises(ValueError):
             self.bank_account.withdraw(1100)
     #test withdraw amount is valid
