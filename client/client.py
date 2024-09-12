@@ -1,9 +1,6 @@
 """
 Description: {This is a `Client` class, representing a client with a client number, first name, 
-last name, and email address. The class validates the client number as an integer, ensures that the first and last 
-names are non-blank, and validates the email address using the `email_validator` package. If the email is invalid, 
-a default email is assigned. The class provides getters for all attributes and a string representation method for 
-displaying client information.}
+last name, and email address. 
 Author: {Jing Li}
 Date: 9/10/2024
 """
@@ -13,7 +10,32 @@ from email_validator import validate_email, EmailNotValidError
 
 
 class Client:
+    """
+    This is a class representing a client
+
+    Attributes: 
+        client_number (int): A unique identifier for the client.
+        first_name(str): the client's first name.
+        last_name(str): the client's last name.
+        email_address(str): the clients's email address.
+
+    """
+    
     def __init__(self,client_number:int, first_name:str, last_name:str, email_address:str):
+        """
+        Initializes a Client instance with a client number, first name, last name and email address.
+        Args:
+            client_number (int): a unique integer identifier for the client.
+            first_name (str): the client's first name.
+            last_name (str): the cilent's last name.
+            email_address (str): the client's email address. if the email address is invalid, 
+            the default email address("email@pixell-river.com")  is assigned.
+
+        Raises:
+            ValueError: if client number is not an integer.
+            ValueError: if first name is blank.
+            ValueError: if last name is blank.
+        """
         # Initializes the client with client details according to the class diagram
         if isinstance(client_number,int):
             self.__client_number = client_number
@@ -44,21 +66,52 @@ class Client:
     # Getter for client_number
     @property
     def client_number(self)->int:
+        """
+        get the client number
+
+        Returns:
+            int: client number
+        """
         return self.__client_number
     # Getter for first_name
     @property
     def first_name(self)->str:
+        """_
+        get the first name of the client
+
+        Returns:
+            str: the client's first name
+
+        """
         return self.__first_name
     # Getter for last_name
     @property
     def last_name(self)->str:
+        """
+        get the last name of the client
+
+        Returns:
+            str: the client's last name
+        """
         return self.__last_name
      # Getter for email_address
     @property
     def email_address(self)->str:
+        """
+        get the email address of the client
+
+        Returns:
+            str: the client's email address
+        """
         return self.__email_address
     
     def __str__(self)->str:
+        """
+        A formated string representation of the client object.
+
+        Returns:
+            str: A formated string displaying the client's last name, first name, client number and email address. 
+        """
         return f"{self.last_name}, {self.first_name}[{self.client_number}]-{self.email_address}"
 
     
