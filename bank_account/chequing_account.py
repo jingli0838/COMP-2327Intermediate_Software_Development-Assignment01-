@@ -11,13 +11,13 @@ from bank_account.bank_account import BankAccount
 
 class ChequingAccount(BankAccount):
     """
-     This is a class representing a chequing account.
+    This is a class representing a chequing account.
 
     Attributes:
         __overdraft_limit (float): The maximum amount a balance can be overdrawn (below 0.00) before overdraft fees are applied.If the incoming value cannot be converted to a float, 
         the attribute representing the overdraft limit should be set to -100 
         __overdraft_rate (float): The rate to which overdraft fees will be applied. If the incoming value cannot be converted to a float,
-          the attribute representing the overdraft rate should be set to 0.05
+        the attribute representing the overdraft rate should be set to 0.05
     """
 
 
@@ -31,7 +31,7 @@ class ChequingAccount(BankAccount):
             balance (float): The initial balance for the account. If the balance cannot be converted to a float, 
             the balance will be initialized to 0.
             data_created(date): The date when the bankaccount created. If the incoming value is not an instance of date,
-            use the today() method of the date class to initialize the attribute representing the date created.=
+            use the today() method of the date class to initialize the attribute representing the date created.
             overdraft_limit (float): The maximum amount a balance can be overdrawn (below 0.00) before overdraft fees are applied.
             overdraft_rate (float): The rate to which overdraft fees will be applied.
         """

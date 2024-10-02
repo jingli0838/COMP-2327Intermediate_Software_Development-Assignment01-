@@ -58,7 +58,6 @@ class BankAccount(ABC):
             self._date_created = date.today()
         else:
             self._date_created = date_created
-
             
          
     @property

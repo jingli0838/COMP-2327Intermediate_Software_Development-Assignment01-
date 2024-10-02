@@ -27,11 +27,11 @@ class Test(unittest.TestCase):
         self.assertEqual(0.05, self.chequing_account._ChequingAccount__overdraft_rate)
 
     def test_overdraft_limit_invalid(self):
-        chequing_account = ChequingAccount(123, 456, 1000.0, date(2024, 8, 1), "overdraft", 0.05)
+        chequing_account = ChequingAccount(123, 456, 0.0, date(2024, 8, 1), "overdraft", 0.05)
         self.assertEqual(-100.00, chequing_account._ChequingAccount__overdraft_limit)
 
     def test_overdraft_rate_invalid(self):
-        chequing_account = ChequingAccount(123, 456, 1000.00, date(2024, 8, 1), -200.0, "rate")
+        chequing_account = ChequingAccount(123, 456, 0.00, date(2024, 8, 1), -100.0, "rate")
         self.assertEqual(0.05, chequing_account._ChequingAccount__overdraft_rate)
 
     def test_date_created_invalid(self):
