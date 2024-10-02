@@ -12,7 +12,7 @@ from bank_account.bank_account import BankAccount
 
 class InvestmentAccount(BankAccount):
     """
-    This is a class representing a investment account.
+    A class representing a investment account, inheriting from the BankAccount class.
 
     Attributes:
         __management_fee(float): The management_fee is a float which stores a flat-rate fee the bank charges for managing an InvestmentAccount.
@@ -29,7 +29,7 @@ class InvestmentAccount(BankAccount):
             the balance will be initialized to 0.
             data_created(date): The date when the bankaccount created. If the incoming value is not an instance of date,
             use the today() method of the date class to initialize the attribute representing the date created.
-            management_fee (float): A flat-rate fee the bank charges for managing an InvestmentAccount.
+            management_fee (float): A flat-rate fee the bank charges for managing an InvestmentAccount. If invalid, it defaults to 2.55.
         """
         
         super().__init__(account_number, client_number, balance, date_created)
@@ -41,7 +41,7 @@ class InvestmentAccount(BankAccount):
         except ValueError:
             self.__management_fee = 2.55
 
-    def __str__(self):
+    def __str__(self) ->str:
         """
         A string representation of the InvestmentAccount instance.
         If the account is 10 years old or less, the management fee is displayed using currency formatting with two decimal places.

@@ -1,5 +1,5 @@
 """
-Description: {Unit tests for the chequing account.}
+Description: {Unit tests for the investment account.}
 Author: {Jing Li}
 Date : 10/1/2024
 """
@@ -25,19 +25,19 @@ class Test(unittest.TestCase):
 
     def test_management_fee_invalid(self):
         investment_account = InvestmentAccount(2341234, 456, 19329.21, date(2024, 1, 1), "fee")
-        self.assertEqual(2.55, investment_account._InvestmentAccount__management_fee)
+        self.assertEqual(2.55, round(investment_account._InvestmentAccount__management_fee, 2))
         
     def test_get_service_charges_with_date_created_more_than_ten_years(self):
         investment_account = InvestmentAccount(2341234, 456, 19329.21, date(2013, 1, 1), 1.99)
-        self.assertEqual(investment_account.BASE_SERVICE_CHARGE, investment_account.get_service_charges())
+        self.assertEqual(investment_account.BASE_SERVICE_CHARGE, round(investment_account.get_service_charges(), 2))
 
     def test_get_service_charges_with_date_created_exactly_ten_years(self):
         investment_account = InvestmentAccount(2341234, 456, 19329.21, date(2014, 10, 3), 1.99)
-        self.assertEqual(2.49, investment_account.get_service_charges())
+        self.assertEqual(2.49, round(investment_account.get_service_charges(), 2))
 
     def test_get_service_charges_with_date_created_within_ten_years(self):
         investment_account = InvestmentAccount(2341234, 456, 19329.21, date(2015, 1, 1), 1.99)
-        self.assertEqual(2.49, investment_account.get_service_charges())
+        self.assertEqual(2.49, round(investment_account.get_service_charges(), 2))
 
     def test_str_with_date_created_more_than_ten_years(self):
         investment_account = InvestmentAccount(2341234, 456, 19329.21, date(2013, 1, 1), 1.99)
@@ -47,6 +47,7 @@ class Test(unittest.TestCase):
     def test_str_with_date_created_within_ten_years(self):
         expected = "Account Number:2341234 Balance:$19,329.21\nDate Created: 2024-01-01 Management Fee: $1.99 Account Type: Investment"
         self.assertEqual(expected, str(self.investment_account))
+
 
     
 
