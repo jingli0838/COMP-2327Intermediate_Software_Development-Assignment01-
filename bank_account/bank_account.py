@@ -5,7 +5,12 @@ Date:9/10/2024
 """
 
 
-class BankAccount:
+from abc import ABC, abstractmethod
+from datetime import date
+from inspect import isabstract
+
+
+class BankAccount(ABC):
     """
     This is a class representing a bank account.
 
@@ -13,33 +18,47 @@ class BankAccount:
         __account_number (int): a unique number for a bank account.
         __client_number (int): a unique number for a clients number.
         __balance (float): the current balance of the account.
+        _data_created(date): the date when the bankaccount created.
     """
-    def __init__(self, account_number: int, client_number: int, balance: float):
+    def __init__(self, account_number: int, client_number: int, balance: float, date_created: date):
+
         """
-        Initializes a BankAccount instance with an account number, client number, and balance.
+        Initializes a BankAccount instance with an account number, client, and balance.
 
         Args:
             account_number (int): a unique number for a bank account.
             client_number (int): a unique number for a bank account.
             balance (float): The initial balance for the account. If the balance cannot be converted to a float, 
             the balance will be initialized to 0.
+            data_created(date): The date when the bankaccount created. If the incoming value is not an instance of date,
+            use the today() method of the date class to initialize the attribute representing the date created.
 
         Raises:
             ValueError: If `account_number` is not an integer.
             ValueError: If `client_number` is not an integer.
         """
+        self.BASE_SERVICE_CHARGE = 0.5
+
         if isinstance(account_number, int):
             self.__account_number = account_number
         else:
             raise ValueError("account_number must be an integer")
+        
         if isinstance(client_number, int):
             self.__client_number = client_number
         else:
             raise ValueError("client_number must be an integer")
+        
         try:
             self.__balance = float(balance)
         except ValueError:
             self.__balance = 0.0
+
+        if not isinstance(date_created, date):
+            self._date_created = date.today()
+        else:
+            self._date_created = date_created
+            
          
     @property
     def account_number(self) -> int:
@@ -135,6 +154,17 @@ class BankAccount:
             Str: a formated string that displays the ccount number and the current balance
         """
         return f"Account Number:{self.account_number} Balance:${self.balance:,.2f}"
+    
+    @abstractmethod
+    def get_service_charges() -> float:
+        """
+        An abstract method calculating service charges that a BankAccount will incur.
+        This method must be implemented by subclasses.
+
+        Returns:
+            float: the calculated service charges that a BankAccount will incur
+        """
+        pass
 
 
 

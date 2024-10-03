@@ -14,4 +14,7 @@ Assignment[02] [This assignment will extend the BankAccount class created in you
 
 
 ## Encapsulation
-[use this section to explain how Encapsulation was achieved in the BankAccount and Transaction classes.]
+[Encapsulation is one of the fundamental principles of object-oriented programming. It refers to the practice of bundling the data (attributes) and methods (functions) that operate on that data into a single unit, usually a class, and restricting direct access to some of the object's components. This is done to protect the internal state of an object and provide controlled access to it.]
+
+##  Polymorphism
+[Polymorphism is a core concept in object-oriented programming that allows objects of different classes to be treated as objects of a common superclass, even if those objects behave differently. In the context of the BankAccount class and its subclasses (ChequingAccount, SavingsAccount, InvestmentAccount), polymorphism is achieved by overriding methods in the subclasses to provide specific behaviors while still maintaining a common interface.]
