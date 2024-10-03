@@ -88,7 +88,6 @@ print(investment_account_02)
 
 print(f'service charges: ${investment_account_02.get_service_charges():.2f}')
 
-
 print("===================================================")
 
 # 12. Update the balance of each account created in steps 2, 5, 8 and 10 
