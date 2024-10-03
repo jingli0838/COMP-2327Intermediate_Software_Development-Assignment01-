@@ -40,14 +40,14 @@ class Test(unittest.TestCase):
 
     def test_get_service_charges_with_balance_equal_to_minimum_balance(self):
         #Arrange
-        savings_account = SavingsAccount(9483914, 345, 50, date(2024, 1, 1), 50.0)
+        savings_account = SavingsAccount(9483914, 345, 50.0, date(2024, 1, 1), 50.0)
         expected_result = savings_account.BASE_SERVICE_CHARGE
         #Act & Assert
         self.assertEqual(expected_result, round(savings_account.get_service_charges(), 2))
 
     def test_get_service_charges_with_balance_less_than_minimum_balance(self):
         #Arrange
-        savings_account = SavingsAccount(9483914, 345, 10, date(2024, 1, 1), 50.0)
+        savings_account = SavingsAccount(9483914, 345, 10.0, date(2024, 1, 1), 50.0)
         expected_result = savings_account.BASE_SERVICE_CHARGE * savings_account.SERVICE_CHARGE_PREMIUM
         #Act & Assert
         self.assertEqual(expected_result, round(savings_account.get_service_charges(), 2))

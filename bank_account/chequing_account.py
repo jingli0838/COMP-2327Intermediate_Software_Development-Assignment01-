@@ -20,7 +20,6 @@ class ChequingAccount(BankAccount):
         the attribute representing the overdraft rate should be set to 0.05
     """
 
-
     def __init__(self, account_number: int, client_number: int, balance: float, date_created: date, overdraft_limit:float, overdraft_rate:float):
         """
         Initializes a ChequingAccount instance with overdraft_limit and overdraft_rate and other parameters inherited from subclass.

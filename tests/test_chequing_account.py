@@ -35,7 +35,7 @@ class Test(unittest.TestCase):
 
     def test_overdraft_rate_invalid(self):
         #Arrange
-        chequing_account = ChequingAccount(123, 456, 0.00, date(2024, 8, 1), -100.0, "rate")
+        chequing_account = ChequingAccount(123, 456, 0.0, date(2024, 8, 1), -100.0, "rate")
         expected_result = 0.05
         #Act & Assert
         self.assertEqual(expected_result, chequing_account._ChequingAccount__overdraft_rate)
