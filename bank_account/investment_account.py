@@ -54,7 +54,7 @@ class InvestmentAccount(BankAccount):
         if self._date_created >= self.TEN_YEARS_AGO:
             return super().__str__()+f'\nDate Created: {self._date_created} Management Fee: ${self.__management_fee} Account Type: Investment'
         else:
-            return super().__str__()+f'\nDate Created: {self._date_created} Management Fee: Wavied Account Type: Investment'
+            return super().__str__()+f'\nDate Created: {self._date_created} Management Fee: Waived Account Type: Investment'
 
     def get_service_charges(self) ->float:
         """
