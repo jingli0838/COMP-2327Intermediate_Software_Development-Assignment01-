@@ -43,7 +43,7 @@ class Test(unittest.TestCase):
     def test_date_created_invalid(self):
         #Arrange
         chequing_account = ChequingAccount(123, 456, -600.00, "invalid date", -100.0, 0.05)
-        expected_result = date(2024, 10, 2)
+        expected_result = date.today()
         #Act & Assert
         self.assertEqual(expected_result, chequing_account._date_created)
 

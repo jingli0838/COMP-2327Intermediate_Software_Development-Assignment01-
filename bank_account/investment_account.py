@@ -34,7 +34,7 @@ class InvestmentAccount(BankAccount):
         
         super().__init__(account_number, client_number, balance, date_created)
 
-        self.TEN_YEARS_AGO = date.today() - timedelta(days = 10 * 365.25)
+        self.TEN_YEARS_AGO = date.today() -timedelta( days = 10 * 365.25)
 
         try:
             self.__management_fee = float(management_fee)
