@@ -8,6 +8,7 @@ from abc import ABC
 from datetime import date, timedelta
 
 from bank_account.bank_account import BankAccount
+from patterns.strategy.management_fee_strategy import ManagementFeeStrategy
 
 
 class InvestmentAccount(BankAccount):
@@ -16,6 +17,7 @@ class InvestmentAccount(BankAccount):
 
     Attributes:
         __management_fee(float): The management_fee is a float which stores a flat-rate fee the bank charges for managing an InvestmentAccount.
+        __management_fee_strategy(ManagementFeeStrategy): an instance of ManagementFeeStrategy class.
     """
 
     def __init__(self, account_number: int, client_number: int, balance: float, date_created: date, management_fee:float):
@@ -30,6 +32,7 @@ class InvestmentAccount(BankAccount):
             data_created(date): The date when the bankaccount created. If the incoming value is not an instance of date,
             use the today() method of the date class to initialize the attribute representing the date created.
             management_fee (float): A flat-rate fee the bank charges for managing an InvestmentAccount. If invalid, it defaults to 2.55.
+            management_fee_strategy(ManagementFeeStrategy): an instance of ManagementFeeStrategy class.
         """
         
         super().__init__(account_number, client_number, balance, date_created)
@@ -40,6 +43,8 @@ class InvestmentAccount(BankAccount):
             self.__management_fee = float(management_fee)
         except ValueError:
             self.__management_fee = 2.55
+
+        self.__management_fee_strategy = ManagementFeeStrategy(self._date_created, self.__management_fee)
 
     def __str__(self) ->str:
         """
@@ -64,14 +69,7 @@ class InvestmentAccount(BankAccount):
             _float_: the calculated service charges of a investment account.
         """
 
-        if self._date_created < self.TEN_YEARS_AGO:
-
-            service_charge = self.BASE_SERVICE_CHARGE
-        else:
-            service_charge = self.BASE_SERVICE_CHARGE + self.__management_fee
-            
-
-        return service_charge
+        return self.__management_fee_strategy.calculate_service_charges(self)
             
 
 

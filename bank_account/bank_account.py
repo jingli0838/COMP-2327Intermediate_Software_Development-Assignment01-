@@ -37,7 +37,7 @@ class BankAccount(ABC):
             ValueError: If `account_number` is not an integer.
             ValueError: If `client_number` is not an integer.
         """
-        self.BASE_SERVICE_CHARGE = 0.5
+    
 
         if isinstance(account_number, int):
             self.__account_number = account_number
