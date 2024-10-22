@@ -1,5 +1,8 @@
 """
-Description: {description of the file.}
+Description: {This file defines the abstract base class 'Observer' for the observer pattern implementation.
+             The Observer class is intended to be inherited by concrete observer classes that wish to receive
+             notifications about changes in a 'Subject' (e.g., bank account updates). Each observer implements
+             the 'update' method, which is called when the subject changes.}
 Author: {Jing Li}
 """
 

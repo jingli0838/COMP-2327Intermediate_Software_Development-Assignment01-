@@ -16,7 +16,7 @@ class MinimumBalanceStrategy(ServiceChargeStrategy):
         __minimum_balance (float): The minimum balance required to avoid the premium service charge.
     """
     
-    SERVICE_CHARGE_PREMIUM = 2.0
+    
 
     def __init__(self, minimum_balance:float):
         """
@@ -27,7 +27,7 @@ class MinimumBalanceStrategy(ServiceChargeStrategy):
         """
 
         self.__minimum_balance = minimum_balance
-
+        self.SERVICE_CHARGE_PREMIUM = 2.0
     
 
     def calculate_service_charges(self, account:BankAccount):
