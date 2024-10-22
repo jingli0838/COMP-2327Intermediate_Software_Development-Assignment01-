@@ -49,21 +49,21 @@ class Test(unittest.TestCase):
 
     def test_get_service_charges_with_balance_greater_than_overdraft_limit(self):
         #Arrange
-        expected_result = self.chequing_account.BASE_SERVICE_CHARGE
+        expected_result = 0.50
         #Act & Assert
         self.assertEqual(expected_result, round(self.chequing_account.get_service_charges(),2))
 
     def test_get_service_charges_with_balance_less_than_overdraft_limit(self):
         #Arrange
         chequing_account = ChequingAccount(123, 456, -600.0, date(2024, 8, 1), -100.0, 0.05)
-        expected_result = chequing_account.BASE_SERVICE_CHARGE + (chequing_account._ChequingAccount__overdraft_limit - chequing_account.balance) * chequing_account._ChequingAccount__overdraft_rate
+        expected_result = 0.50 + (chequing_account._ChequingAccount__overdraft_limit - chequing_account.balance) * chequing_account._ChequingAccount__overdraft_rate
         #Act & Assert
         self.assertAlmostEqual(expected_result,round(chequing_account.get_service_charges(),2))
 
     def test_get_service_charges_with_balance_equals_to_overdraft_limit(self):
         #Arrange
         chequing_account = ChequingAccount(123, 456, -100.0, date(2024, 8, 1), -100.0, 0.05)
-        expected_result = chequing_account.BASE_SERVICE_CHARGE
+        expected_result = 0.50
         #Act & Assert
         self.assertAlmostEqual(expected_result, round(chequing_account.get_service_charges(),2))
 

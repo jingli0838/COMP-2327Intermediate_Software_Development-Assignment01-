@@ -6,10 +6,14 @@ Date: 9/10/2024
 """
 
 
+from datetime import datetime
 from email_validator import validate_email, EmailNotValidError
 
+from patterns.observer.observer import Observer
+from utility.file_utils import simulate_send_email
 
-class Client:
+
+class Client(Observer):
     """
     This is a class representing a client
 
@@ -113,6 +117,22 @@ class Client:
             str: A formated string displaying the client's last name, first name, client number and email address. 
         """
         return f"{self.last_name}, {self.first_name}[{self.client_number}]-{self.email_address}"
+    
+    def update(self, message:str) -> None:
+        """
+        Performs some action when the observer is notified.
+        Sends a simulated email with a notification message.
+        
+        Args:
+            message (str): The notification message describing the update.
+        """
+        current_time = datetime.now()
+        subject = f'ALERT: Unusual Activity: {current_time}'
+
+        body = f'Notification for {self.client_number}: {self.first_name} {self.last_name}: {message}'
+        simulate_send_email(self.email_address, subject, body)
+
+
 
     
 

@@ -8,6 +8,7 @@ Date: 10/2/2024
 
 from datetime import date
 from bank_account.bank_account import BankAccount
+from patterns.strategy.minimum_balance_strategy import MinimumBalanceStrategy
 
 
 class SavingsAccount(BankAccount):
@@ -34,12 +35,13 @@ class SavingsAccount(BankAccount):
         """
         super().__init__(account_number, client_number, balance, date_created)
 
-        self.SERVICE_CHARGE_PREMIUM = 2.0 # a SavingsAccounts will incur 2 times the BASE_SERVICE_CHARGE when the balance drops below the minimum_balance.
         
         try:
             self.__minimum_balance = float(minimum_balance)
         except ValueError:
             self.__minimum_balance = 50.0
+
+        self.__minimum_balance_strategy = MinimumBalanceStrategy(self.__minimum_balance)
 
     def __str__(self):
         """
@@ -57,12 +59,7 @@ class SavingsAccount(BankAccount):
         Returns:
             _float_: the calculated service charges of a saving account.
         """
-        if self.balance >= self.__minimum_balance:
-            service_charge = self.BASE_SERVICE_CHARGE
-        else:
-            service_charge = self.BASE_SERVICE_CHARGE * self.SERVICE_CHARGE_PREMIUM
-        
-        return service_charge
+        return self.__minimum_balance_strategy.calculate_service_charges(self)
     
 
 
