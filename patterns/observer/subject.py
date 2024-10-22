@@ -25,7 +25,7 @@ class Subject(ABC):
         """
         self._observers = []
 
-    #The attach method is used to add a new observer to the subject's list of observers.
+    # The attach method is used to add a new observer to the subject's list of observers.
     def attach(self, observer:Observer) -> None:
         """
         A method that attaches an observer to the subject.
@@ -36,7 +36,7 @@ class Subject(ABC):
         """
         self._observers.append(observer)
 
-    #The detach method removes an observer from the subject's list of observers.
+    # The detach method removes an observer from the subject's list of observers.
     def detach(self, observer:Observer) -> None:
         """
         A method that detaches an observer from the subject.
