@@ -9,8 +9,10 @@ from abc import ABC, abstractmethod
 from datetime import date
 from inspect import isabstract
 
+from patterns.observer.subject import Subject
 
-class BankAccount(ABC):
+
+class BankAccount(Subject, ABC):
     """
     This is a class representing a bank account.
 
@@ -19,9 +21,13 @@ class BankAccount(ABC):
         __client_number (int): a unique number for a clients number.
         __balance (float): the current balance of the account.
         _data_created(date): the date when the bankaccount created.
+        LARGE_TRANSACTION_THRESHOLD(constant): A constant defining what qualifies as a large transaction.
+        LOW_BALANCE_LEVEL(constant):A constant defining the low balance threshold.
     """
-    def __init__(self, account_number: int, client_number: int, balance: float, date_created: date):
+   
 
+    def __init__(self, account_number: int, client_number: int, balance: float, date_created: date):
+        super().__init__()
         """
         Initializes a BankAccount instance with an account number, client, and balance.
 
@@ -59,7 +65,9 @@ class BankAccount(ABC):
         else:
             self._date_created = date_created
             
-         
+        self.LARGE_TRANSACTION_THRESHOLD = 9999.99
+        self.LOW_BALANCE_LEVEL = 50.0
+
     @property
     def account_number(self) -> int:
         """
@@ -105,7 +113,15 @@ class BankAccount(ABC):
             self.__balance += amount
         except ValueError:
            raise ValueError(f"the balance is not updated due to invalid amount")
-    
+        
+        if self.__balance < self.LOW_BALANCE_LEVEL:
+            message = f"Low balance warning ${self.__balance:.2f}: on account {self.__account_number}."
+            self.notify(message)
+
+        if amount > self.LARGE_TRANSACTION_THRESHOLD:
+            message = f'Large transaction ${amount:.2f}: on account {self.__account_number}.'
+            self.notify(message)
+
     def deposit(self, amount: float):
         """
         deposit a specified amount of money into the bank account
@@ -145,6 +161,7 @@ class BankAccount(ABC):
             raise ValueError(f"Withdrawal amount: ${amount:,.2f} must not exceed the account balance: ${self.balance:,.2f}")
         else:
             self.update_balance(-amount)
+
      # __str__ method is defined to produce a string   
     def __str__(self):
         """

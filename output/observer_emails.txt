@@ -1,0 +1,30 @@
+---
+To: lilygreen@gmail.com
+Subject: ALERT: Unusual Activity: 2024-10-21 22:49:52.249865
+Message: Notification for 123: Lily Green: Large transaction $10000.00: on account 456.
+---
+---
+To: lilygreen@gmail.com
+Subject: ALERT: Unusual Activity: 2024-10-21 22:49:52.251479
+Message: Notification for 123: Lily Green: Low balance warning $20.00: on account 456.
+---
+---
+To: lilygreen@gmail.com
+Subject: ALERT: Unusual Activity: 2024-10-21 22:49:52.251479
+Message: Notification for 123: Lily Green: Large transaction $12000.00: on account 345.
+---
+---
+To: lilygreen@gmail.com
+Subject: ALERT: Unusual Activity: 2024-10-21 22:49:52.252485
+Message: Notification for 123: Lily Green: Low balance warning $9.49: on account 345.
+---
+---
+To: monicageller@gmail.com
+Subject: ALERT: Unusual Activity: 2024-10-21 22:49:52.252485
+Message: Notification for 666: Monica Geller: Large transaction $11000.00: on account 2389.
+---
+---
+To: monicageller@gmail.com
+Subject: ALERT: Unusual Activity: 2024-10-21 22:49:52.253484
+Message: Notification for 666: Monica Geller: Low balance warning $32.50: on account 2389.
+---
