@@ -1,5 +1,7 @@
 """
-Description: this file is for BankAccount class.
+Description:This file defines the 'BankAccount' class, which serves as an abstract base class for various types of bank accounts.
+            The class represents common attributes and behaviors of a bank account. It also defines methods for updating the balance, depositing, withdrawing, and notifying observers
+            when significant account activities occur..
 Author: {Jing Li}
 Date:9/10/2024
 """

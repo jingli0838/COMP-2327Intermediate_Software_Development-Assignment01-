@@ -1,5 +1,5 @@
 """
-Description: {description of the file.}
+Description: this file is about a class representing a strategy for calculating service charges based on account creation date and a management fee
 Author: {Jing Li}
 """
 

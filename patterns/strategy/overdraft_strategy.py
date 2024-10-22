@@ -1,5 +1,6 @@
 """
-Description: {description of the file.}
+Description: This file is about a class representing a strategy for calculating service charges based on overdraft limits and rates.
+    
 Author: {Jing Li}
 """
 from bank_account.bank_account import BankAccount

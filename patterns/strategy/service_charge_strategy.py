@@ -1,6 +1,6 @@
 
 """
-Description: {description of the file.}
+Description: This file is about an abstract base class representing a strategy for calculating service charges on a bank account.
 Author: {Jing Li}
 """
 

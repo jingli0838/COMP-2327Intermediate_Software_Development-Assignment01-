@@ -1,5 +1,6 @@
 """
-Description: {description of the file.}
+Description: This file is about a class representing a strategy for calculating service charges based on whether an account's balance meets the minimum required balance.
+
 Author: {Jing Li}
 """
 
