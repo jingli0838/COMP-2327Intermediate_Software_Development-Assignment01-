@@ -1,11 +1,21 @@
+
 import os
 import sys
+
+
+
 # THIS LINE IS NEEDED SO THAT THE GIVEN TESTING 
 # CODE CAN RUN FROM THIS DIRECTORY.
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import csv
-from datetime import datetime
+from datetime import date, datetime
 import logging
+
+from bank_account.bank_account import BankAccount
+from bank_account.chequing_account import ChequingAccount
+from bank_account.investment_account import InvestmentAccount
+from bank_account.savings_account import SavingsAccount
+from client.client import Client
 
 # *******************************************************************************
 # GIVEN LOGGING AND FILE ACCESS CODE
@@ -40,10 +50,6 @@ accounts_csv_path = os.path.join(data_dir, 'accounts.csv')
 # *******************************************************************************
 
 
-
-
-
-
 def load_data()->tuple[dict,dict]:
     """
     Populates a client dictionary and an account dictionary with 
@@ -57,13 +63,69 @@ def load_data()->tuple[dict,dict]:
     # READ CLIENT DATA 
     with open(clients_csv_path, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
-        
+        for row in reader:
+            try:
+                try:
+                    client_number = int(row['client_number'])
+                except ValueError:
+                    raise ValueError("Client number must be an integer.")
+                first_name = row['first_name']
+                last_name = row['last_name']
+                email_address = row['email_address']
+
+                if not isinstance(client_number,int):
+                    raise ValueError('client_number should be an integer.')
+                if not first_name:
+                    raise ValueError('first name should not be blank.')
+                if not last_name:
+                    raise ValueError('last name should not be blank.')
+                if  not email_address:
+                    raise ValueError('email address should not be blank.')
+                
+                client_listing[client_number] = Client(client_number, first_name, last_name, email_address)
+            except Exception as e:
+                logging.error(f'Unable to create client: {e}') 
 
     # READ ACCOUNT DATA
     with open(accounts_csv_path, newline='') as csvfile:
         reader = csv.DictReader(csvfile)  
+        for row in reader: 
+            try:
+                account_number = int(row['account_number'])
+                client_number = int(row['client_number'])
+                balance = float(row['balance'])
+                if row['overdraft_limit'] != "Null":
+                    overdraft_limit = float(row['overdraft_limit']) 
+                if row['overdraft_rate'] != "Null":
+                    overdraft_rate = float(row['overdraft_rate'])
+                if row['minimum_balance'] != "Null":
+                    minimum_balance = float(row['minimum_balance'])
+                if row['management_fee'] != "Null":
+                    management_fee = float(row['management_fee'])
+                try:
+                    date_created = datetime.strptime(row['date_created'], "%Y-%m-%d").date()
+                except ValueError:
+                    raise ValueError(f'invalid date:{row['date_created']}')
+                account_type = row['account_type']
 
+                if account_type == "ChequingAccount":
+                    account = ChequingAccount(account_number, client_number,balance, date_created,overdraft_limit,overdraft_rate)
+                elif account_type == "InvestmentAccount":
+                    account = InvestmentAccount(account_number, client_number, balance, date_created, management_fee)
+                elif account_type == "SavingsAccount":
+                    account = SavingsAccount(account_number, client_number,balance, date_created, minimum_balance)
+                else:
+                    raise ValueError("Not a valid account type")
+
+                if client_number in client_listing:
+                    accounts[account_number] = account
+                else: 
+                    raise ValueError(f'{account_number} contains invalid Client Number: {client_number}')
+            except Exception as e:
+                logging.error(e)
     # RETURN STATEMENT
+    return (accounts, client_listing)
+
     
 
 
