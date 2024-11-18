@@ -9,8 +9,13 @@ from user_interface.manage_data import update_data
 from bank_account.bank_account import BankAccount
 
 class ClientLookupWindow(LookupWindow):
-    
+    """
+    This class represents a window for searching and managing client accounts.
+    """
     def __init__(self):
+        """
+        Initialize the ClientLookupWindow.
+        """
         super().__init__()
         self.__client_listing = {}
         self.__accounts ={}
@@ -23,6 +28,9 @@ class ClientLookupWindow(LookupWindow):
 
     
     def on_lookup_client(self):
+        """
+        A function to search for a client by their client number and display their information.
+        """
         try:
             # Attempt to convert input to an integer
             client_number = int(self.client_number_edit.text())
@@ -80,6 +88,13 @@ class ClientLookupWindow(LookupWindow):
 
     @Slot(int, int)          
     def __on_select_account(self, row: int, column: int) ->None:
+        """
+        a function that handles the selection of an account in the account table.
+
+        Args:
+            row (int): The row index of the selected cell in the account table.
+            column (int): The column index of the selected cell in the account table.
+        """
         #selected_table_row = self.account_table.currentRow()
         account_number = self.account_table.item(row,0).text()
         if len(account_number.strip())== 0:
