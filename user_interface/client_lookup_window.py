@@ -22,12 +22,12 @@ class ClientLookupWindow(LookupWindow):
         data = load_data()
         self.__client_listing = data[1]
         self.__accounts = data[0]
-        self.lookup_button.clicked.connect(self.on_lookup_client)
+        self.lookup_button.clicked.connect(self.__on_lookup_client)
         self.account_table.cellClicked.connect(self.__on_select_account)
         print(f"Client Listing: {self.__client_listing}")
 
     
-    def on_lookup_client(self):
+    def __on_lookup_client(self):
         """
         A function to search for a client by their client number and display their information.
         """
@@ -123,11 +123,11 @@ class ClientLookupWindow(LookupWindow):
         bank_account = self.__accounts[int(account_number)]
         account_details_window = AccountDetailsWindow(bank_account)
         #connect the Signal object of the AccountDetailsWindow instance to the update_data method
-        account_details_window.balance_updated.connect(self.update_data)
+        account_details_window.balance_updated.connect(self.__update_data)
         account_details_window.exec()
 
             
-    def update_data(self,account: BankAccount):
+    def __update_data(self,account: BankAccount):
         """
         Updates the account_table, accounts dictionary, and accounts.csv file
         with the latest data for the given BankAccount.

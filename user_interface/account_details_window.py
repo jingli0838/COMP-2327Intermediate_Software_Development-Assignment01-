@@ -23,18 +23,18 @@ class AccountDetailsWindow(DetailsWindow):
         super().__init__()
         if isinstance(account, BankAccount):
             # Create a copy of the account
-            self.account = copy.copy(account)
+            self.__account = copy.copy(account)
             # Set the text for account number and balance labels
-            self.account_number_label.setText(str(self.account.account_number))
-            self.balance_label.setText(f'${self.account.balance:,.2f}')
+            self.account_number_label.setText(str(self.__account.account_number))
+            self.balance_label.setText(f'${self.__account.balance:,.2f}')
 
-            self.deposit_button.clicked.connect(self.on_apply_transaction)
-            self.withdraw_button.clicked.connect(self.on_apply_transaction)
-            self.exit_button.clicked.connect(self.on_exit)
+            self.deposit_button.clicked.connect(self.__on_apply_transaction)
+            self.withdraw_button.clicked.connect(self.__on_apply_transaction)
+            self.exit_button.clicked.connect(self.__on_exit)
         else:
             self.reject()
 
-    def on_apply_transaction(self):
+    def __on_apply_transaction(self):
         """
         This function handles deposit or withdraw transactions on the account.
         It updates the account balance, the display, and emits a balance_updated signal.
@@ -58,14 +58,14 @@ class AccountDetailsWindow(DetailsWindow):
             #the sender was the deposit_button
             if sending_button == self.deposit_button:
                 operation = "Deposit"
-                self.account.deposit(transction_amount)   
+                self.__account.deposit(transction_amount)   
             #the sender was the withdraw_button
             if sending_button == self.withdraw_button:
                 operation = "Withdraw"
-                self.account.withdraw(transction_amount)
+                self.__account.withdraw(transction_amount)
             #Update the balance_label widget with the updated balance value of the account attribute
             self.transaction_amount_edit.setText("")
-            self.balance_label.setText(f'${self.account.balance:,.2f}')
+            self.balance_label.setText(f'${self.__account.balance:,.2f}')
             self.transaction_amount_edit.setFocus()
         except Exception as e:
             # Show an error message if input is not numeric
@@ -78,10 +78,10 @@ class AccountDetailsWindow(DetailsWindow):
             self.transaction_amount_edit.setFocus()
             return
         
-        self.balance_updated.emit(self.account)
+        self.balance_updated.emit(self.__account)
 
 
-    def on_exit(self):
+    def __on_exit(self):
         """
         This function closes the account details window and returns to the previous window.
         """
