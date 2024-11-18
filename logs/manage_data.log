@@ -1,0 +1,12 @@
+
+root - ERROR - Unable to create client: first name should not be blank.
+
+
+root - ERROR - could not convert string to float: 'ten'
+
+
+root - ERROR - invalid date:20230915
+
+
+root - ERROR - Not a valid account type
+

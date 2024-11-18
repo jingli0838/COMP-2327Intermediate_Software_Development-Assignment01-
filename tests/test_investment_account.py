@@ -41,7 +41,7 @@ class Test(unittest.TestCase):
 
     def test_get_service_charges_with_date_created_exactly_ten_years(self):
         #Arrange
-        investment_account = InvestmentAccount(2341234, 456, 19329.21, date(2014, 10, 22), 1.99)
+        investment_account = InvestmentAccount(2341234, 456, 19329.21, date(2014, 10, 23), 1.99)
         expected_service_charges = 0.50 + investment_account._InvestmentAccount__management_fee
         #Act & Assert
         self.assertEqual(expected_service_charges, round(investment_account.get_service_charges(), 2))

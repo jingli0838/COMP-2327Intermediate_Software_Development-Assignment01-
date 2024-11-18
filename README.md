@@ -14,6 +14,8 @@ Assignment[02] [This assignment will extend the BankAccount class created in you
 
 Assignment [3]: This assignment will address issues associated with the scalability and maintainability of the current service charge calculation functionality.
 
+Assignment [4]: This assignment will incorporate a Graphical User Interface (GUI) into the PiXELL-River Financial banking system. The end product will include a lookup window from which users can view existing Client and corresponding Bank Account data. The user can then select a Bank Account and perform deposit and withdraw transactions against the selected Bank Account. 
+
 
 ## Encapsulation
 [Encapsulation is one of the fundamental principles of object-oriented programming. It refers to the practice of bundling the data (attributes) and methods (functions) that operate on that data into a single unit, usually a class, and restricting direct access to some of the object's components. This is done to protect the internal state of an object and provide controlled access to it.]
