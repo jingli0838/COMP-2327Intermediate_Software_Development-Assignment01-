@@ -160,6 +160,9 @@ class ClientLookupWindow(LookupWindow):
         update_data(account)
 
     def __on_filter_clicked(self):
+        """
+        Handles the click event of the filter button.
+        """
 
         if self.filter_button.text() == "Apply Filter":
             column_table_index = self.filter_combo_box.currentIndex()
@@ -183,6 +186,12 @@ class ClientLookupWindow(LookupWindow):
             self.__toggle_filter(False)
 
     def __toggle_filter(self, filter_on):
+        """
+        Toggles the filter state and updates the UI accordingly.
+
+        Args:
+            filter_on(bool): to indicate whether the filter is currently active.
+        """
         if filter_on == True:
             self.filter_button.setText("Reset") 
             self.filter_button.setEnabled(True)
